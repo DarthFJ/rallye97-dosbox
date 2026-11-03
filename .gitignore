@@ -1,0 +1,9 @@
+# Alles ignorieren, nur die eigenen Dateien freigeben.
+# Spieldaten (RALLYE97.BIN, hdd\) sind urheberrechtlich geschuetzt und bleiben lokal.
+*
+!.gitignore
+!README.md
+!rallye.conf
+!rallye-install.conf
+!rallye-setsound.conf
+!Rallye starten.bat
