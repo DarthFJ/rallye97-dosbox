@@ -1,37 +1,36 @@
-# Rallye Racing 97 in DOSBox Staging
+# Rallye Racing 97 für Windows
 
-Getestete Konfiguration, um *Rallye Racing 97* (Network Q RAC Rally Championship, 1996) unter Windows 11 mit DOSBox Staging 0.83 zu spielen.
+Startet *Rallye Racing 97* (Network Q RAC Rally Championship, 1996) auf aktuellen Windows-PCs, ohne Einrichtung. DOSBox Staging wird automatisch in diesen Ordner geladen und nicht im System installiert.
 
-Das Repo enthält **keine Spieldaten**. Du brauchst ein eigenes vollständiges CD-Abbild.
+Das Repo enthält **keine Spieldaten**. Du brauchst deine eigene CD oder ein vollständiges Abbild davon.
 
-## Voraussetzungen
+## So geht's
 
-- [DOSBox Staging](https://www.dosbox-staging.org/) (`winget install DOSBoxStaging.DOSBoxStaging`)
-- Ein BIN/CUE-Abbild der Spiel-CD mit den Audiotracks, als `RALLYE97.BIN` und `RALLYE97.CUE`
+1. Lade diesen Ordner herunter.
+2. Kopiere dein Abbild hinein (`.cue` und `.bin`) oder lege die CD ein.
+3. Starte `Starten.bat`.
 
-Das Abbild muss die Datei `68060` im Hauptverzeichnis enthalten. Fehlt sie, beendet sich das Spiel beim Start kommentarlos, denn `RAL.EXE` prüft damit, ob die CD eingelegt ist.
+Beim ersten Start werden das Spiel installiert und DOSBox geladen, das dauert meist unter einer Minute. Einbinden musst du das Abbild nicht, das erledigt DOSBox selbst.
 
-Die Pfade sind auf `C:\Rallye97` ausgelegt. Liegt der Ordner woanders, passe `capture_dir` in `rallye.conf` an.
+| Datei | Zweck |
+|---|---|
+| `Starten.bat` | Startet das Spiel und installiert es vorher, falls nötig |
+| `Installieren.bat` | Installiert nur, ohne das Spiel zu starten |
+| `Deinstallieren.bat` | Entfernt Spiel, Spielstände und DOSBox, Abbild und Skripte bleiben |
 
-## Einrichtung
+Eine Internetverbindung ist nur beim ersten Start nötig.
 
-Lege die Abbild-Dateien in diesen Ordner und einen leeren Unterordner `hdd` an. Führe dann in diesem Ordner aus:
+## Abbild oder CD
 
-```bat
-"%LOCALAPPDATA%\Programs\DOSBox Staging\dosbox.exe" -conf rallye-install.conf -noprimaryconf -nolocalconf
-```
+- **BIN/CUE (empfohlen, getestet):** enthält auch die CD-Musik.
+- **ISO (noch nicht getestet):** läuft ohne CD-Musik.
+- **CD (noch nicht getestet):** Sie muss beim Spielen im Laufwerk liegen.
 
-1. Installiere das Spiel nach `c:\rallyc`.
-2. Die Soundeinrichtung am Ende des Installationsprogramms hängt sich auf. Schließe DOSBox dann.
-3. Richte den Sound separat ein und wähle als digitalen Treiber „Sound Blaster 16“:
-
-```bat
-"%LOCALAPPDATA%\Programs\DOSBox Staging\dosbox.exe" -conf rallye-setsound.conf -noprimaryconf -nolocalconf
-```
-
-Danach startest du das Spiel mit `Rallye starten.bat`.
+Das Medium muss im Hauptverzeichnis die Datei `68060` enthalten, sonst beendet sich das Spiel kommentarlos. Bei unvollständigen Abbildern bricht die Installation deshalb mit einem Hinweis ab.
 
 ## Bewährte Einstellungen
+
+Sie stehen in `rallye.conf`:
 
 | Einstellung | Wert | Grund |
 |---|---|---|
